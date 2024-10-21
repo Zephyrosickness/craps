@@ -1,17 +1,13 @@
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Root {
     public static void main(String[] args){
         //init var
         Random rand = new Random();
         boolean exitStatus;
-        final int[] WIN = {7,11};
-        final int[] LOSS = {2,3,12};
+        ArrayList<Integer> win = new ArrayList<Integer>(Arrays.asList(7,11)){};
+        ArrayList<Integer>  loss = new ArrayList<Integer>(Arrays.asList(2,3,12)){};
         String message;
-        boolean gameCondition = true;
 
         System.out.println("Welcome to the Craps simulator!\nIf the sum is 2, 3, or 12 it is called \"craps\" or \"crapping out\" and the game is over with a loss.\nIf the sum is 7 or 11 it is called a \"natural\" and the game is over with a win.\nFor all other values, the sum becomes \"the point\" and the user makes subsequent rolls until they either roll a 7, in which case they lose, or they roll the point sum in which case they win.");
 
@@ -40,21 +36,17 @@ public class Root {
                 //like maybe a lambda (i still do not get lambdas bro ngl)
                 //AHHH I LOOKED IT UP WHAT ARE INTERFACES??? THIS IS BLACK MAGIC LOLLLL
 
-                //also i was originally gonna use arraylists here of the winning vals and do [list].contains(sum) but then it didnt work for some strange reason so nvm guys
-                //im like way too tired to figure out why arraylists dont work
-
-                boolean winCondition = sum==7||sum==11||sum==point;
-                boolean loseCondition = sum==2||sum==3||sum==12;
-                if(winCondition||loseCondition){
+                if(win.contains(sum)||loss.contains(sum)){
                     gameContinueStatus = false; //stops roll-loop and allows player to input if they want to play again
 
-                    if(winCondition){message = "You win!";
+                    if(win.contains(sum)){message = "You win!";
                     }else{message = "You lose!";}
 
                 }else {
-                    if (iterations == 1) {//this is literally the only reason the iterations var exists is for this one purpose of making sure the point isnt constantly changed. unless im misunderstanding craps and you're supposed to constantly change the point but that doesnt sound fair
+                    if (iterations == 1) { //this is literally the only reason the iterations var exists is for this one purpose of making sure the point isnt constantly changed. unless im misunderstanding craps and you're supposed to constantly change the point but that doesnt sound fair
                         point = sum;
                         message = point + " is now the \"point\". You must roll " + point + " or any of the other winning values to win.";
+                        win.add(point);
                     }else{message = "Reroll. You must roll " + point + " to win.";}
                 }
 
