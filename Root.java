@@ -5,8 +5,8 @@ public class Root {
         //init var
         Random rand = new Random();
         boolean exitStatus;
-        ArrayList<Integer> win = new ArrayList<Integer>(Arrays.asList(7,11)){};
-        ArrayList<Integer>  loss = new ArrayList<Integer>(Arrays.asList(2,3,12)){};
+        ArrayList<Integer> win = new ArrayList<>(Arrays.asList(7,11)){};
+        ArrayList<Integer>  loss = new ArrayList<>(Arrays.asList(2,3,12)){};
         String message;
 
         System.out.println("Welcome to the Craps simulator!\nIf the sum is 2, 3, or 12 it is called \"craps\" or \"crapping out\" and the game is over with a loss.\nIf the sum is 7 or 11 it is called a \"natural\" and the game is over with a win.\nFor all other values, the sum becomes \"the point\" and the user makes subsequent rolls until they either roll a 7, in which case they lose, or they roll the point sum in which case they win.");
